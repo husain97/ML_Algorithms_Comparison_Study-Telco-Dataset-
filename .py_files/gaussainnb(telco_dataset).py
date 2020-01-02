@@ -119,7 +119,7 @@ features = list(zip(customerid_encoded, onlineSecurity_encoded, contract_encoded
 print("Training Dataset:",features[0:10])
 
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(features, churn_encoded, test_size=0.3, random_state=109)
+X_train, X_test, y_train, y_test = train_test_split(features, churn_encoded, test_size=0.4, random_state=109)
 
 #CREATING AND TRAINING THE MODEL
 print("Training Dataset:",X_train[0:100])
@@ -140,4 +140,29 @@ print(predicted_decoded)
 from sklearn import metrics
 print("Accuracy:",(round(metrics.accuracy_score(y_test,predicted) * 100)), "%")
 
-print(X_train)
+#An alternative approach to GaussainNB
+df = data_pd
+for col_name in df.columns:
+    if(df[col_name].dtype == 'object'):
+        df[col_name]= df[col_name].astype('category')
+        df[col_name] = df[col_name].cat.codes
+'''with np.printoptions(threshold=np.inf):
+  print(df.columns)'''
+
+features_cols = ['customerID', 'gender', 'SeniorCitizen', 'Partner', 'Dependents',
+       'tenure', 'PhoneService', 'MultipleLines', 'InternetService',
+       'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
+       'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling',
+       'PaymentMethod', 'MonthlyCharges', 'TotalCharges']
+
+X = df[features_cols]
+Y = df.Churn
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.4, random_state=1)
+from sklearn.naive_bayes import GaussianNB
+model = GaussianNB()
+model.fit(X_train, y_train)
+predicted = model.predict(X_test)
+from sklearn import metrics
+print("Accuracy:",(round(metrics.accuracy_score(y_test,predicted) * 100)), "%")
