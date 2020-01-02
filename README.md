@@ -8,9 +8,9 @@ A comprehensive Machine Learning Algorithm Comparison Study. The project compris
 4. Support Vector Machines -Sigmoid and RBF
 
 # Notes:
-1. Support Vector Machine with Linear Kernel in not included in this study because it takes comprehensive processing time for huge datasets. In the case of this dataset SVM with Linear kernel gives 80% Accuracy but takes a lot of time. For experimentation purposes, SVM with linear kernel is included in indvidual algorithms.
+1. Support Vector Machine with Linear Kernel is not included in this study because it takes comprehensive processing time for huge datasets. In the case of this dataset SVM with Linear kernel gives 80% Accuracy but takes a lot of time. For experimentation purposes, SVM with linear kernel is included in indvidual algorithms.
 
-2. In decision Tree Classifier, the visualization of Unpruned tree may take time and the visualization of Pruned tree is comparatively fast due to default depth taken as 3.
+2. In Decision Tree Classifier, the visualization of Unpruned tree may take time and the visualization of Pruned tree is comparatively fast due to default depth taken as 3.
 
 3. In KNN, the 7-nearest neighbours are taken into consideration.
 
